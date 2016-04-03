@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-03T09:50:18.141Z</updated>
+  <updated>2016-04-03T16:48:55.304Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,112 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Git常用命令总结</title>
+    <link href="http://yoursite.com/2016/04/04/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2016/04/04/Git常用命令总结/</id>
+    <published>2016-04-03T16:30:28.000Z</published>
+    <updated>2016-04-03T16:48:55.304Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/0060lm7Tgw1f2jzaz7beqj30cn05ajrq.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;学会这些命令，你就可以熟练的使用Git工具，听上去就让人兴奋，嘿嘿！&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;基本命令&quot;&gt;&lt;a href=&quot;#基本命令&quot; class=&quot;headerlink&quot; title=&quot;基本命令&quot;&gt;&lt;/a&gt;基本命令&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git config --global user.name &amp;quot;Your Name&amp;quot;&lt;/code&gt;设置你的仓库用户名（用于标识提交者）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global user.name &amp;quot;email@example.com&amp;quot;&lt;/code&gt;设置你的仓库邮箱（用于标识提交者）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git init&lt;/code&gt;初始化一个git仓库&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git add --all&lt;/code&gt;添加所有更改文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git add filename&lt;/code&gt;指定添加名为filename文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git commit -m &amp;quot;commit message&amp;quot;&lt;/code&gt;添加更改的信息，必须要有，不然报错，不建议不加&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git status&lt;/code&gt;查看git当前状态&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git diff filename&lt;/code&gt;查看filename修改内容&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log&lt;/code&gt;查看最近的提交日志&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log --pretty=oneline&lt;/code&gt;单行显示提交日志&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git reset --hard commitID&lt;/code&gt;利用&lt;code&gt;git log&lt;/code&gt;得到的commitID返回版本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git reset --hard HEAD^&lt;/code&gt;回到上一个版本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git reflog&lt;/code&gt;查看命令的历史，可以找到&lt;code&gt;git log&lt;/code&gt;看不到的commitID，因为&lt;code&gt;git log&lt;/code&gt;只显示当前的提交日志，如果你提交了一次，退回版本后又后悔了，就能查看上次提交的commitID&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git checkout -- filename&lt;/code&gt;利用版本库中的版本替换工作区中的文件。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git reset HEAD filename&lt;/code&gt;撤销add，回到工作区&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git rm filename&lt;/code&gt;删除文件&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git remote add origin https://github.com/pengloo53/learngit.git&lt;/code&gt;将本地库关联到github远程库上&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git push -u origin master&lt;/code&gt;第一次推送的时候要加上&lt;code&gt;-u&lt;/code&gt;参数，可以将本地库的master分支与远程库的master分支关联起来；下次提交就不需要加&lt;code&gt;-u&lt;/code&gt;了。&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clone https://github.com/pengloo53/learngit.git&lt;/code&gt;克隆远程库到本地&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;分支管理&quot;&gt;&lt;a href=&quot;#分支管理&quot; class=&quot;headerlink&quot; title=&quot;分支管理&quot;&gt;&lt;/a&gt;分支管理&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git checkout -b dev&lt;/code&gt;创建dev分支并切换到dev&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch&lt;/code&gt;查看当前分支&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git merge dev&lt;/code&gt;合并指定分支到当前分支，如，你现在master分支，那么执行命令就将dev分支合并到了master分支上&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch -d dev&lt;/code&gt;删除dev分支&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log --graph --pretty=oneline --abbrev-commit&lt;/code&gt;查看分支合并图&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git merge --no-ff -m &amp;quot;merge with no-ff&amp;quot; dev&lt;/code&gt;禁用「Fast forward」，也就是保留分支的相关信息&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git stash&lt;/code&gt;将工作区现场储藏起来，等以后恢复后继续工作。通常用于处理更为着急的任务时&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git stash list&lt;/code&gt;查看保存的工作现场&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git stash apply&lt;/code&gt;恢复工作现场&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git stash drop&lt;/code&gt;删除stash内容&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git stash pop&lt;/code&gt;恢复的同时直接删除stash内容&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git stash apply stash@{0}&lt;/code&gt;恢复指定的工作现场，当你保存了不只一份工作现场时&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch -D feature-vulcan&lt;/code&gt;强行删除分支。用于不需要合并，就地删除的情况&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git remote&lt;/code&gt;查看远程库的信息，一般返回origin&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git remote -v&lt;/code&gt;查看远程库的详细信息&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git push origin master&lt;/code&gt;将本地master分支推送到远程master分支(&lt;br&gt;  master分支为主分支，因此要时刻与远程同步；&lt;br&gt;  dev分支为开发分支，团队成员都需要在上面工作，所以也需要与远程同步；&lt;br&gt;  bug分支只用于在本地修复bug，没有必要推送到远程；&lt;br&gt;  feature新功能分支是否推送到远程，取决于你是否和其他人合作在上面开发。&lt;br&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clone https://github.com/pengloo53/learngit.git&lt;/code&gt;将远程库克隆到本地，默认只能看到master分支&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git checkout -b dev origin/dev&lt;/code&gt;创建远程dev分支到本地&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git pull&lt;/code&gt;将远程分支的最新内容抓取下来&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git branch --set-upstream dev origin/dev&lt;/code&gt;将本地dev分支与远程dev分支之间建立链接&lt;br&gt;&lt;br&gt;&lt;em&gt;多人协作工作模式&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;首先，可以试图用&lt;code&gt;git push origin branch-name&lt;/code&gt;推送自己的修改；&lt;/li&gt;
+&lt;li&gt;如果推送失败，则因为远程分支比你的本地更新，需要先用&lt;code&gt;git pull&lt;/code&gt;试图合并（如果&lt;code&gt;git pull&lt;/code&gt;提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令&lt;code&gt;git branch --set-upstream branch-name origin/branch-name&lt;/code&gt;）; &lt;/li&gt;
+&lt;li&gt;如果合并有冲突，则解决冲突，并在本地提交； &lt;/li&gt;
+&lt;li&gt;没有冲突或者解决掉冲突后，再用&lt;code&gt;git push origin branch-name&lt;/code&gt;推送就能成功！&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3 id=&quot;标签管理&quot;&gt;&lt;a href=&quot;#标签管理&quot; class=&quot;headerlink&quot; title=&quot;标签管理&quot;&gt;&lt;/a&gt;标签管理&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git tag v1.0&lt;/code&gt;给当前分支打上标签&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git tag&lt;/code&gt;查看所有的标签，按时间顺序列出&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git log --pretty=oneline --abbrev-commit&lt;/code&gt;缩略commitID并单行显示提交信息&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git tag v0.9 commitID&lt;/code&gt;通过上一条命令查看commitID，然后打上标签。用于忘记打标签的情况，因为标签其实就是只想某个commitID的指针，默认情况下，标签打在最新的提交上&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git show v0.9&lt;/code&gt; 查看标签信息&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git tag -a v0.1 -m &amp;quot;version 0.1 released&amp;quot; commitID&lt;/code&gt;创建带有说明的标签，&lt;code&gt;-a&lt;/code&gt;指定标签名，&lt;code&gt;-m&lt;/code&gt;指定说明文字&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git tag -d v0.1&lt;/code&gt; 删除标签v0.1&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git push origin v1.0&lt;/code&gt;推送标签1.0到远程&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git push origin --tags&lt;/code&gt;推送所有的标签到远程&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git push origin :refs/tags/v0.9&lt;/code&gt;删除远程标签，但是前提是要先在本地删除对应标签&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;自定义Git&quot;&gt;&lt;a href=&quot;#自定义Git&quot; class=&quot;headerlink&quot; title=&quot;自定义Git&quot;&gt;&lt;/a&gt;自定义Git&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;git config --global color.ui true&lt;/code&gt;让Git显示颜色&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;.gitignore&lt;/code&gt;在这个文件里编辑你要忽略的文件，并提交到Git中，就可以忽略特殊文件的检查。如将&lt;code&gt;-.db&lt;/code&gt;写入&lt;code&gt;.gitignore&lt;/code&gt;文件中，将忽略所有db文件。可以参考github收集的所有.gitignore&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global alias.st status&lt;/code&gt;将status的别名设置成st，那么&lt;code&gt;git st&lt;/code&gt;=&lt;code&gt;git status&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global alias.unstage &amp;#39;reset HEAD&amp;#39;&lt;/code&gt;那么&lt;code&gt;git reset HEAD filename&lt;/code&gt;=&lt;code&gt;git unstage filename&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git config --global alias.last &amp;#39;log -1&amp;#39;&lt;/code&gt;敲&lt;code&gt;git last&lt;/code&gt;就显示最后一次提交了&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;搭建Git服务器&quot;&gt;&lt;a href=&quot;#搭建Git服务器&quot; class=&quot;headerlink&quot; title=&quot;搭建Git服务器&quot;&gt;&lt;/a&gt;搭建Git服务器&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;sudo apt-get install git&lt;/code&gt;安装Git&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo adduser git&lt;/code&gt;添加Git用户&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo git init --bare sample.git&lt;/code&gt;初始化git仓库&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;sudo chown -R git:git sample.git&lt;/code&gt;修改仓库的所属用户为git&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;将git用户的信息&lt;code&gt;git:x:1001:1001:,,,:/home/git:/bin/bash&lt;/code&gt;改成&lt;code&gt;git:x:1001:1001:,,,:/home/git:/bin/git-shell&lt;/code&gt;,为了禁用shell登录&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;git clone git@server:/director/sample.git&lt;/code&gt;克隆Git服务器上的仓库&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/0060lm7Tgw1f2jzaz7beqj30cn05ajrq.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;学会这些命令，你就可以熟练的使用Git工具，听上去就让人兴奋，嘿嘿！&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>My New Post</title>
