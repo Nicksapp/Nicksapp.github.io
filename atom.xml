@@ -4,9 +4,9 @@
   <subtitle>出发之前永远是梦想 上路之后永远是挑战</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
-  <updated>2016-04-03T16:48:55.304Z</updated>
-  <id>http://yoursite.com/</id>
+  <link href="http://nickgo.com/"/>
+  <updated>2016-04-17T07:02:31.929Z</updated>
+  <id>http://nickgo.com/</id>
   
   <author>
     <name>Nick Chang</name>
@@ -16,9 +16,47 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>如何直接在github上预览html效果</title>
+    <link href="http://nickgo.com/2016/04/17/%E5%A6%82%E4%BD%95%E7%9B%B4%E6%8E%A5%E5%9C%A8github%E4%B8%8A%E9%A2%84%E8%A7%88html%E6%95%88%E6%9E%9C/"/>
+    <id>http://nickgo.com/2016/04/17/如何直接在github上预览html效果/</id>
+    <published>2016-04-17T06:16:35.000Z</published>
+    <updated>2016-04-17T07:02:31.929Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/0060lm7Tgw1f2zoo4eo2ej30l10d9gnb.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们经常会在&lt;strong&gt;Github&lt;/strong&gt;上托管我们的web项目，但一般只能在上面看到我们的源码，如果想要在线预览我们的项目该怎么办呢？其实只需要很简单的方法就能做到了&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h2 id=&quot;Github项目效果在线预览&quot;&gt;&lt;a href=&quot;#Github项目效果在线预览&quot; class=&quot;headerlink&quot; title=&quot;Github项目效果在线预览&quot;&gt;&lt;/a&gt;Github项目效果在线预览&lt;/h2&gt;&lt;p&gt;在&lt;strong&gt;Github&lt;/strong&gt;上托管的项目中经常会存放一些demo的html文件在里面，比如像是下面这样的：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/0060lm7Tgw1f2zoo4eo2ej30l10d9gnb.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;如果直接点击html文件只能看到html文件的源码，那么有没有什么办法可以直接在浏览器看到html的网页效果而不用克隆到本地呢？&lt;/p&gt;
+&lt;p&gt;做法是&lt;strong&gt;&lt;a href=&quot;http://htmlpreview.github.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://htmlpreview.github.com/&lt;/a&gt;&lt;/strong&gt;直接把github上的html文件链接复制在上面即可，或者直接在你的html文件链接前加上&lt;strong&gt;&lt;a href=&quot;http://htmlpreview.github.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://htmlpreview.github.io/?&lt;/a&gt;&lt;/strong&gt;如图：&lt;br&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/0060lm7Tgw1f2zoo4dm1bj30lj08raaw.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;比如，Github上我有这么一个文件&lt;strong&gt;&lt;a href=&quot;https://github.com/Nicksapp/To-Do-List/blob/master/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/Nicksapp/To-Do-List/blob/master/index.html&lt;/a&gt;&lt;/strong&gt;,直接访问看到的是这样的：&lt;br&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/0060lm7Tgw1f2zoo4nsmcj30pa0etjvo.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;只有这样访问我们的文件才能直接在网页中预览到效果：&lt;strong&gt;&lt;a href=&quot;http://htmlpreview.github.io/?https://github.com/Nicksapp/To-Do-List/blob/master/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://htmlpreview.github.io/?https://github.com/Nicksapp/To-Do-List/blob/master/index.html&lt;/a&gt;&lt;/strong&gt;像是这样：&lt;br&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/0060lm7Tgw1f2zp683ug6j30s00jqjtr.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;赶紧拿自己的项目试试吧！&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ww3.sinaimg.cn/large/0060lm7Tgw1f2zoo4eo2ej30l10d9gnb.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我们经常会在&lt;strong&gt;Github&lt;/strong&gt;上托管我们的web项目，但一般只能在上面看到我们的源码，如果想要在线预览我们的项目该怎么办呢？其实只需要很简单的方法就能做到了&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="实用技巧" scheme="http://nickgo.com/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
+    
+    
+      <category term="github" scheme="http://nickgo.com/tags/github/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Git常用命令总结</title>
-    <link href="http://yoursite.com/2016/04/04/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2016/04/04/Git常用命令总结/</id>
+    <link href="http://nickgo.com/2016/04/04/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
+    <id>http://nickgo.com/2016/04/04/Git常用命令总结/</id>
     <published>2016-04-03T16:30:28.000Z</published>
     <updated>2016-04-03T16:48:55.304Z</updated>
     
@@ -114,17 +152,17 @@
     
     </summary>
     
-      <category term="笔记" scheme="http://yoursite.com/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="http://nickgo.com/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+      <category term="git" scheme="http://nickgo.com/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>My New Post</title>
-    <link href="http://yoursite.com/2016/03/31/my-new-post/"/>
-    <id>http://yoursite.com/2016/03/31/my-new-post/</id>
+    <link href="http://nickgo.com/2016/03/31/my-new-post/"/>
+    <id>http://nickgo.com/2016/03/31/my-new-post/</id>
     <published>2016-03-31T14:59:10.000Z</published>
     <updated>2016-04-03T09:50:18.141Z</updated>
     
@@ -138,17 +176,17 @@
     
     </summary>
     
-      <category term="test" scheme="http://yoursite.com/categories/test/"/>
+      <category term="test" scheme="http://nickgo.com/categories/test/"/>
     
     
-      <category term="博客，测试" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%B5%8B%E8%AF%95/"/>
+      <category term="博客，测试" scheme="http://nickgo.com/tags/%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2016/03/30/hello-world/"/>
-    <id>http://yoursite.com/2016/03/30/hello-world/</id>
+    <link href="http://nickgo.com/2016/03/30/hello-world/"/>
+    <id>http://nickgo.com/2016/03/30/hello-world/</id>
     <published>2016-03-30T14:34:47.303Z</published>
     <updated>2016-04-03T10:03:18.065Z</updated>
     
