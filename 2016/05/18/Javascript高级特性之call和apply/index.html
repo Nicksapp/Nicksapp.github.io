@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Javascript," />
 
 
 
@@ -59,15 +59,18 @@
 
 
 
-<meta name="description" content="Why always me ---StaryDog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Nick's Blog">
-<meta property="og:url" content="http://nickgo.com/tags/github/index.html">
+<meta name="description" content="在Javascript中，call和apply是两个神奇的方法，但同时也是容易令人迷惑的两个方法，乃至许多对Javascript有经验的人也不太清楚他们的用法。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript高级特性之call和apply">
+<meta property="og:url" content="http://nickgo.com/2016/05/18/Javascript高级特性之call和apply/index.html">
 <meta property="og:site_name" content="Nick's Blog">
-<meta property="og:description" content="Why always me ---StaryDog">
+<meta property="og:description" content="在Javascript中，call和apply是两个神奇的方法，但同时也是容易令人迷惑的两个方法，乃至许多对Javascript有经验的人也不太清楚他们的用法。">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1f3zt6vfykkj308y04cglr.jpg">
+<meta property="og:updated_time" content="2016-05-18T13:15:22.136Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Nick's Blog">
-<meta name="twitter:description" content="Why always me ---StaryDog">
+<meta name="twitter:title" content="Javascript高级特性之call和apply">
+<meta name="twitter:description" content="在Javascript中，call和apply是两个神奇的方法，但同时也是容易令人迷惑的两个方法，乃至许多对Javascript有经验的人也不太清楚他们的用法。">
+<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1f3zt6vfykkj308y04cglr.jpg">
 
 
 
@@ -85,7 +88,7 @@
   };
 </script>
 
-  <title> 标签: github | Nick's Blog </title>
+  <title> Javascript高级特性之call和apply | Nick's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -117,7 +120,7 @@ Duoshuo ShortName";
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -215,46 +218,171 @@ Duoshuo ShortName";
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        github
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Javascript高级特性之call和apply
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-05-18T19:57:08+08:00" content="2016-05-18">
+              2016-05-18
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/学习笔记/" itemprop="url" rel="index">
+                    <span itemprop="name">学习笔记</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/05/18/Javascript高级特性之call和apply/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/05/18/Javascript高级特性之call和apply/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/05/18/Javascript高级特性之call和apply/" class="leancloud_visitors" data-flag-title="Javascript高级特性之call和apply">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p><img src="http://ww1.sinaimg.cn/large/0060lm7Tgw1f3zt6vfykkj308y04cglr.jpg" alt=""></p>
+<blockquote>
+<p>在Javascript中，call和apply是两个神奇的方法，但同时也是容易令人迷惑的两个方法，乃至许多对Javascript有经验的人也不太清楚他们的用法。</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Javascript高级特性之call和apply"><a href="#Javascript高级特性之call和apply" class="headerlink" title="Javascript高级特性之call和apply"></a>Javascript高级特性之call和apply</h1><h2 id="1-call和apply"><a href="#1-call和apply" class="headerlink" title="1.call和apply"></a>1.call和apply</h2><p>call和apply的功能是以不同的对象作为上下文来调用某个函数。简而言之，就是允许一个对象区调用另一个对象的成员函数。乍一看似乎很不可思议，而且容易引起混乱，但其实Javascript并没有严格的所谓”成员函数”的概念，函数与对象的所属关系在调用时才展现出来。灵活使用call和apply可以节省不少的时间，在后面我们可以看到，call可以用于实现对象的继承。</p>
+<p>call和apply的功能是一致的，两者细微的差别在于call以参数表来接受被调用函数的参数，而apply以数组来接受被调用函数的参数。call和apply的语法分别是：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">func.call(thisArg[,arg1[,arg2[, ...]]]);</span><br><span class="line">func.apply(thisArg[,argsArray]);</span><br></pre></td></tr></table></figure>
+<p>其中，func是函数的引用，thisArg是func被调用时的上下文对象，arg1、arg2或argsArray是传入func的参数。我们以下面一段代码为例介绍call的工作机制：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someuser = &#123;</span><br><span class="line">    name: <span class="string">'nick'</span>,</span><br><span class="line">    display: <span class="function"><span class="keyword">function</span>(<span class="params">words</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' says '</span> + words);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">    name: <span class="string">'foobar'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">someuser.display.call(foo, <span class="string">'hello'</span>);<span class="comment">//输出 foobar says hello</span></span><br></pre></td></tr></table></figure>
+<p>用Node.js运行这段代码，我们可以看到控制台输出了foobar。Someuser.display是被调用的函数，它通过call将上下文改变为foo对象，因此在函数体内访问this.name时，实际上访问的是foo.name,因而输出了foobar。</p>
+<h2 id="2-bind"><a href="#2-bind" class="headerlink" title="2.bind"></a>2.bind</h2><p>如何改变被调用函数上下文呢？前面说过，可以用call或apply方法，但是如果重复使用会不方便，因为每次都要把上下文对象作为参数传递，而且还会使代码变得不直观。针对这种情况，我们可以使用bind方法来永久地绑定函数的上下文，使其无论被谁调用，上下文都是固定的。bind语法如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">func.bind(thisArg[, arg1[, arg2[, ...]]])</span><br></pre></td></tr></table></figure></p>
+<p>其中func是待绑定函数，thisArg是改变的上下文对象，arg1、arg2是绑定的参数表。bind方法返回值是上下文为thisArg的func。通过下面例子可以帮你理解bind的使用方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> someuser = &#123;</span><br><span class="line">    name: <span class="string">'nick'</span>,</span><br><span class="line">    func: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> foo = &#123;</span><br><span class="line">    name: <span class="string">'foobar'</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">foo.func = someuser.func;</span><br><span class="line">foo.func(); <span class="comment">//输出 foobar</span></span><br><span class="line"></span><br><span class="line">foo.func1 = someuser.func.bind(someuser)</span><br><span class="line">foo.func1();<span class="comment">//输出nick</span></span><br><span class="line"></span><br><span class="line">func = someuser.func.bind(foo);</span><br><span class="line">func();<span class="comment">//输出foobar</span></span><br><span class="line"></span><br><span class="line">func2 = func;</span><br><span class="line">func2();<span class="comment">//输出foobar</span></span><br></pre></td></tr></table></figure>
+<p>上面代码直接将foo.func赋值为someuser.func，调用foo.func()时，this指针为foo，所以输出结果是foobar。foo.func1使用了bind方法，将someuser作为this指针绑定到someuser.func，调用foo.func1()时，this指针为someuser，所以输出结果是nick。全局函数func同样使用了bind方法，将foo作为this指针绑定到someuser.func，调用func()时，this指针为foo，所以输出结果是foobar。而func2直接绑定过的func赋值过来，与func行为完全相同。</p>
+<h2 id="3-使用bind绑定参数表"><a href="#3-使用bind绑定参数表" class="headerlink" title="3.使用bind绑定参数表"></a>3.使用bind绑定参数表</h2><p>bind 方法还有一个重要的功能：绑定参数表，如下例所示。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    name: <span class="string">'nick'</span>,</span><br><span class="line">    says: <span class="function"><span class="keyword">function</span>(<span class="params">act, obj</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">' '</span> + act + <span class="string">' '</span> + obj);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">person.says(<span class="string">'love'</span>,<span class="string">'sal'</span>);<span class="comment">//nick love sal</span></span><br><span class="line"></span><br><span class="line">nickLoves = person.says.bind(person, <span class="string">'love'</span>);</span><br><span class="line">nickLoves(<span class="string">'you'</span>);<span class="comment">//输出nick love you</span></span><br></pre></td></tr></table></figure>
+<p>可以看到，nickLoves将this指针绑定到了person，并将第一个参数绑定到love,之后再调用nickLoves的时候，只需传入第三个参数。这个特性可以用于创建一个函数的“捷径“，之后我们可以通过这个”捷径“调用，以便在代码多出调用时省略重复输入相同的参数。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/04/17/如何直接在github上预览html效果/" itemprop="url">
-              
-                <span itemprop="name">如何直接在github上预览html效果</span>
-              
-            </a>
-        
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-04-17T14:16:35+08:00"
-              content="2016-04-17" >
-          04-17
-        </time>
-      </div>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Javascript/" rel="tag">#Javascript</a>
+          
+        </div>
+      
 
-    </header>
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/18/Javascript高级特性之闭包/" rel="next" title="Javascript高级特性之闭包">
+                <i class="fa fa-chevron-left"></i> Javascript高级特性之闭包
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+        
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -262,6 +390,14 @@ Duoshuo ShortName";
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/05/18/Javascript高级特性之call和apply/"
+           data-title="Javascript高级特性之call和apply" data-url="http://nickgo.com/2016/05/18/Javascript高级特性之call和apply/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -281,8 +417,17 @@ Duoshuo ShortName";
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww3.sinaimg.cn/large/0060lm7Tgw1f2iqmr1r6tj30dw0dwjub.jpg"
@@ -417,6 +562,17 @@ Duoshuo ShortName";
       </section>
 
       
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Javascript高级特性之call和apply"><span class="nav-number">1.</span> <span class="nav-text">Javascript高级特性之call和apply</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-call和apply"><span class="nav-number">1.1.</span> <span class="nav-text">1.call和apply</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-bind"><span class="nav-number">1.2.</span> <span class="nav-text">2.bind</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-使用bind绑定参数表"><span class="nav-number">1.3.</span> <span class="nav-text">3.使用bind绑定参数表</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
 
     </div>
   </aside>
@@ -533,6 +689,10 @@ document.getElementById("showDays").innerHTML = "小店已运行 "+total+" 天";
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=0.5.0"></script>
+
+
 
   
 
