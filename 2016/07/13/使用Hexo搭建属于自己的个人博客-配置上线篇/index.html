@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="Nick Chang" />
+
+
+
+<meta name="description" content="Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Hexo搭建属于自己的个人博客---配置上线篇">
+<meta property="og:url" content="http://nickgo.com/2016/07/13/使用Hexo搭建属于自己的个人博客-配置上线篇/index.html">
+<meta property="og:site_name" content="Nick's Blog">
+<meta property="og:description" content="Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。">
+<meta property="og:image" content="http://blog.wangyizhe.net/img/blog-hexo.png">
+<meta property="og:image" content="https://s3.amazonaws.com/ptsteadman-images/hexo.png">
+<meta property="og:image" content="https://www.codenameone.com/img/blog/github-logo.jpg">
+<meta property="og:updated_time" content="2016-07-13T16:38:16.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用Hexo搭建属于自己的个人博客---配置上线篇">
+<meta name="twitter:description" content="Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。">
+<meta name="twitter:image" content="http://blog.wangyizhe.net/img/blog-hexo.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="Nick&#39;s Blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>使用Hexo搭建属于自己的个人博客---配置上线篇 | Nick&#39;s Blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="http://ww3.sinaimg.cn/large/0060lm7Tgw1f2iqmr1r6tj30dw0dwjub.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">Nick Chang</a></h1>
+        </hgroup>
+
+        
+        <p class="header-subtitle">出发之前永远是梦想 上路之后永远是挑战</p>
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">博客首页</a></li>
+                        
+                            <li><a href="/archives">所有文章</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                            <li><a href="/tags">云标签</a></li>
+                        
+                            <li><a href="/about">关于小鱼</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:changjie22@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="http://weibo.com/516724275" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/nicksapp" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="http://zhihu.com/people/nickgo" title="知乎"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript/">Javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/github/">github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客，测试/">博客，测试</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="/">欢迎互链</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">正在走往前端道路的菜菜小鱼~</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Nick Chang</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="http://ww3.sinaimg.cn/large/0060lm7Tgw1f2iqmr1r6tj30dw0dwjub.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">Nick Chang</a></h1>
+            </hgroup>
+            
+            <p class="header-subtitle">出发之前永远是梦想 上路之后永远是挑战</p>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">博客首页</a></li>
+                
+                    <li><a href="/archives">所有文章</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                    <li><a href="/tags">云标签</a></li>
+                
+                    <li><a href="/about">关于小鱼</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:changjie22@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="http://weibo.com/516724275" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/nicksapp" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="http://zhihu.com/people/nickgo" title="知乎"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-使用Hexo搭建属于自己的个人博客-配置上线篇" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/13/使用Hexo搭建属于自己的个人博客-配置上线篇/" class="article-date">
+      <time datetime="2016-07-13T15:28:44.000Z" itemprop="datePublished">2016-07-13</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用Hexo搭建属于自己的个人博客---配置上线篇
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/网站搭建/">网站搭建</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><img src="http://blog.wangyizhe.net/img/blog-hexo.png" alt=""></p>
+<blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+</blockquote>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>务必检查电脑中是否已安装下列基本应用：</p>
+<ul>
+<li><a href="https://nodejs.org/en/" target="_blank" rel="external">Node.js</a></li>
+<li><a href="https://git-scm.com" target="_blank" rel="external">Git</a></li>
+</ul>
+<p>已经安装过的同学就可以直接开始安装Hexo了！<br><code>$ npm install -g hero-cli</code><br>安装成功后可以输入<code>Hexo -v</code>,如果正常出现Hexo的版本信息，就说明你已经安装成功了！<br><strong>如果显示‘hexo’不是内部或外部命令，可能是安装时没有输入<code>-g</code>,没有在全局下安装，重新安装即可</strong></p>
+<blockquote>
+<p>注意：如果在Mac上正常安装会报错的话，<code>sudo npm install -g hero-cli</code> 在前面加一个<code>sudo</code>就不会报错了</p>
+</blockquote>
+<h2 id="网站搭建"><a href="#网站搭建" class="headerlink" title="网站搭建"></a>网站搭建</h2><p>安装Hexo完成后，在自己想要存放的文件夹下面执行以下命令初始化一个Hexo项目。<br><code>$ Hexo init</code><br><code>$ npm install</code><br>新建完成后，指定文件夹的目录如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">├── .deploy       #需要部署的文件</div><div class="line">├── node_modules  #Hexo插件</div><div class="line">├── public        #生成的静态网页文件</div><div class="line">├── scaffolds     #模板</div><div class="line">├── source        #博客正文和其他源文件, 404 、favicon 、CNAME</div><div class="line">|   ├── _drafts   #草稿</div><div class="line">|   └── _posts    #文章</div><div class="line">├── themes        #主题</div><div class="line">├── _config.yml   #全局配置文件</div><div class="line">└── package.json</div></pre></td></tr></table></figure>
+<p>输入命令<code>$ hexo s</code>根据提示本地链接，应该就可以在浏览器上访问了，<img src="https://s3.amazonaws.com/ptsteadman-images/hexo.png" alt="">你的网站就已经基本搭建好了，怎么样是不是简单到不可思议！下面我们为了之后继续完善我们的博客，了解一下项目内的各类文件的作用。</p>
+<h3 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h3><p>是网站的基本信息配置，你可以在此配置一些参数。<strong>注意：yml语法严格，注意冒号后面必须加空格</strong><br><figure class="highlight yaml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Site #站点信息</span></div><div class="line"><span class="attr">title:</span> Hexo <span class="comment">#博客标题</span></div><div class="line"><span class="attr">subtitle:</span>  <span class="comment">#副标题</span></div><div class="line"><span class="attr">description:</span>  <span class="comment">#描述</span></div><div class="line"><span class="attr">author:</span>  <span class="comment">#作者</span></div><div class="line"><span class="attr">language:</span> zh-Hans <span class="comment">#语言</span></div><div class="line"><span class="attr">timezone:</span> Asia/Shanghai <span class="comment">#时区</span></div><div class="line"></div><div class="line"><span class="comment"># URL #链接格式</span></div><div class="line"><span class="attr">url:</span> http://yoursite.com <span class="comment">#博客网址</span></div><div class="line"><span class="attr">root:</span> / <span class="comment">#根目录</span></div><div class="line"><span class="attr">permalink:</span> :year/:month/:day/:title/ <span class="comment">#文章的链接格式</span></div><div class="line"><span class="attr">permalink_defaults:</span></div><div class="line"></div><div class="line"><span class="comment"># Directory #目录</span></div><div class="line"><span class="attr">source_dir:</span> source <span class="comment">#源文件</span></div><div class="line"><span class="attr">public_dir:</span> public <span class="comment">#生成的文件</span></div><div class="line"><span class="attr">tag_dir:</span> tags <span class="comment">#标签文件夹</span></div><div class="line"><span class="attr">archive_dir:</span> archives <span class="comment">#归档文件夹</span></div><div class="line"><span class="attr">category_dir:</span> categories <span class="comment">#分类文件夹</span></div><div class="line"><span class="attr">code_dir:</span> downloads/code <span class="comment">#下载文件</span></div><div class="line"><span class="attr">i18n_dir:</span> :lang <span class="comment">#国际化</span></div><div class="line"><span class="attr">skip_render:</span></div><div class="line"></div><div class="line"><span class="comment"># Writing #写作</span></div><div class="line"><span class="attr">new_post_name:</span> :title.md <span class="comment">#文章标题</span></div><div class="line"><span class="attr">default_layout:</span> post <span class="comment">#模板</span></div><div class="line"><span class="attr">titlecase:</span> <span class="literal">false</span> <span class="comment">#标题是否换成小写</span></div><div class="line"><span class="attr">external_link:</span> <span class="literal">true</span> <span class="comment">#是否在新页面打开链接</span></div><div class="line"><span class="attr">filename_case:</span> <span class="number">0</span></div><div class="line"><span class="attr">render_drafts:</span> <span class="literal">false</span></div><div class="line"><span class="attr">post_asset_folder:</span> <span class="literal">false</span></div><div class="line"><span class="attr">relative_link:</span> <span class="literal">false</span></div><div class="line"><span class="attr">future:</span> <span class="literal">true</span></div><div class="line"><span class="attr">highlight:</span></div><div class="line"><span class="attr">  enable:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  line_number:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  auto_detect:</span> <span class="literal">true</span></div><div class="line"><span class="attr">  tab_replace:</span></div><div class="line"></div><div class="line"><span class="comment"># Category &amp; Tag #分类和标签</span></div><div class="line"><span class="attr">default_category:</span> uncategorized</div><div class="line"><span class="attr">category_map:</span></div><div class="line"><span class="attr">tag_map:</span></div><div class="line"></div><div class="line"><span class="comment"># Date #时间日期格式</span></div><div class="line"><span class="attr">date_format:</span> YYYY-MM-DD</div><div class="line"><span class="attr">time_format:</span> HH:mm:ss</div><div class="line"></div><div class="line"><span class="comment"># Pagination #分页</span></div><div class="line"><span class="attr">per_page:</span> <span class="number">10</span> <span class="comment">#每页文章数</span></div><div class="line"><span class="attr">pagination_dir:</span> page</div><div class="line"></div><div class="line"><span class="comment"># Extensions #插件和主题</span></div><div class="line"><span class="comment">## Plugins: http://hexo.io/plugins/</span></div><div class="line"><span class="comment">## Themes: http://hexo.io/themes/</span></div><div class="line"><span class="attr">theme:</span> landscape</div><div class="line"></div><div class="line"><span class="comment"># Deployment #部署配置</span></div><div class="line"><span class="comment">## Docs: http://hexo.io/docs/deployment.html</span></div><div class="line"><span class="attr">deploy:</span></div><div class="line"><span class="attr">  type:</span></div></pre></td></tr></table></figure></p>
+<h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><p>应用程序的信息,和项目所需的所有依赖模块信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package.json</div><div class="line">&#123;</div><div class="line">  &quot;name&quot;: &quot;hexo-site&quot;,</div><div class="line">  &quot;version&quot;: &quot;0.0.0&quot;,</div><div class="line">  &quot;private&quot;: true,</div><div class="line">  &quot;hexo&quot;: &#123;</div><div class="line">    &quot;version&quot;: &quot;&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;dependencies&quot;: &#123;</div><div class="line">    &quot;hexo&quot;: &quot;^3.0.0&quot;,</div><div class="line">    &quot;hexo-generator-archive&quot;: &quot;^0.1.0&quot;,</div><div class="line">    &quot;hexo-generator-category&quot;: &quot;^0.1.0&quot;,</div><div class="line">    &quot;hexo-generator-index&quot;: &quot;^0.1.0&quot;,</div><div class="line">    &quot;hexo-generator-tag&quot;: &quot;^0.1.0&quot;,</div><div class="line">    &quot;hexo-renderer-ejs&quot;: &quot;^0.1.0&quot;,</div><div class="line">    &quot;hexo-renderer-stylus&quot;: &quot;^0.2.0&quot;,</div><div class="line">    &quot;hexo-renderer-marked&quot;: &quot;^0.2.4&quot;,</div><div class="line">    &quot;hexo-server&quot;: &quot;^0.1.2&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="scaffolds"><a href="#scaffolds" class="headerlink" title="scaffolds"></a>scaffolds</h3><p>模版 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件。</p>
+<h3 id="source"><a href="#source" class="headerlink" title="source"></a>source</h3><p>资源文件夹是存放用户资源的地方。除<code>_posts</code> 文件夹之外，开头命名为 _ (下划线)的文件 / 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</p>
+<h3 id="Themes"><a href="#Themes" class="headerlink" title="Themes"></a>Themes</h3><p>主题文件夹,从网上下载的主题也需存放在这里。Hexo 会根据主题来生成静态页面。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><table>
+<thead>
+<tr>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td>网站标题</td>
+</tr>
+<tr>
+<td><code>subtitle</code></td>
+<td>网站副标题</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>网站描述</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>作者名字</td>
+</tr>
+<tr>
+<td><code>language</code></td>
+<td>网站使用的语言</td>
+</tr>
+<tr>
+<td><code>timezone</code></td>
+<td>网站时区</td>
+</tr>
+</tbody>
+</table>
+<p>其他配置信息我们之后接触在继续了解就行了。</p>
+<h2 id="基本指令"><a href="#基本指令" class="headerlink" title="基本指令"></a>基本指令</h2><h3 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h3><p><code>$ hero new &quot;title&quot;</code><br>使用后会在<code>source/_post</code>文件夹下生成<code>title.md</code>文件，直接编辑保存即可，这样一篇文章就建好了。注意需用<code>markdown</code>格式输入自己的文章，推荐<a href="https://maxiang.io/" target="_blank" rel="external">一个在线markdown编辑器</a>。</p>
+<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><p><code>$ hexo generate</code><br>输入命令后会在项目文件夹内生成<code>public</code>文件夹，存放渲染出的网站静态文件。</p>
+<h3 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h3><p><code>$ hexo server</code><br>启动服务器。默认情况下，访问网址为： <code>http://localhost:4000/</code></p>
+<h3 id="部署网站"><a href="#部署网站" class="headerlink" title="部署网站"></a>部署网站</h3><p><code>$ hexo deploy</code><br>本地搭建好我们网站后，我们的下一步就是让我们的网站上线了，现在来介绍一下现在最普遍流行的利用GitHub来存放我们的网站。还没有Github账户的童鞋赶紧注册吧。<br><img src="https://www.codenameone.com/img/blog/github-logo.jpg" alt=""></p>
+<h4 id="1-首先在repositories选项下new一个新项目，注意项目名务必设置为自己的用户名-github-io来命名，例如我的账号名为void，则将项目名设为void-github-io即可。"><a href="#1-首先在repositories选项下new一个新项目，注意项目名务必设置为自己的用户名-github-io来命名，例如我的账号名为void，则将项目名设为void-github-io即可。" class="headerlink" title="1.首先在repositories选项下new一个新项目，注意项目名务必设置为自己的用户名.github.io来命名，例如我的账号名为void，则将项目名设为void.github.io即可。"></a>1.首先在repositories选项下<code>new</code>一个新项目，注意项目名务必设置为自己的<code>用户名.github.io</code>来命名，例如我的账号名为<code>void</code>，则将项目名设为<code>void.github.io</code>即可。</h4><h4 id="2-配置本地项目下的-config-yml文件"><a href="#2-配置本地项目下的-config-yml文件" class="headerlink" title="2.配置本地项目下的_config.yml文件"></a>2.配置本地项目下的<code>_config.yml</code>文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">_config.yml</div><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: https://github.com/void/void.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<p>任然以前的假设为例子，这样就可以输入指令<br><code>$ hexo deploy</code> 将我们的网站部署到Github中了！！！<br>等待操作完成后，在线访问<code>http://你的用户名.github.io</code>看看是不是自己的网站已经可以在线看到了！<br>好了今天我们就到这里，接下来我会就主题以及一些实用插件进行介绍，来完善我们的博客。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/07/13/使用Hexo搭建属于自己的个人博客-配置上线篇/">使用Hexo搭建属于自己的个人博客---配置上线篇</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Nick Chang</a></p>
+        <p><span>发布时间:</span>2016-07-13, 23:28:44</p>
+        <p><span>最后更新:</span>2016-07-14, 00:38:16</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/13/使用Hexo搭建属于自己的个人博客-配置上线篇/" title="使用Hexo搭建属于自己的个人博客---配置上线篇">http://nickgo.com/2016/07/13/使用Hexo搭建属于自己的个人博客-配置上线篇/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://nickgo.com/2016/07/13/使用Hexo搭建属于自己的个人博客-配置上线篇/　　作者: Nick Chang" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/07/13/使用Hexo搭建属于自己的个人博客-主题插件篇/">
+                    使用Hexo搭建属于自己的个人博客---主题插件篇
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/07/08/hello-world/">
+                    Hello World - new
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#"><span class="toc-number">1.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网站搭建"><span class="toc-number">3.</span> <span class="toc-text">网站搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#config-yml"><span class="toc-number">3.1.</span> <span class="toc-text">_config.yml</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#package-json"><span class="toc-number">3.2.</span> <span class="toc-text">package.json</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#scaffolds"><span class="toc-number">3.3.</span> <span class="toc-text">scaffolds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#source"><span class="toc-number">3.4.</span> <span class="toc-text">source</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Themes"><span class="toc-number">3.5.</span> <span class="toc-text">Themes</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置"><span class="toc-number">4.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本指令"><span class="toc-number">5.</span> <span class="toc-text">基本指令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建文章"><span class="toc-number">5.1.</span> <span class="toc-text">新建文章</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#生成静态文件"><span class="toc-number">5.2.</span> <span class="toc-text">生成静态文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启动服务器"><span class="toc-number">5.3.</span> <span class="toc-text">启动服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署网站"><span class="toc-number">5.4.</span> <span class="toc-text">部署网站</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-首先在repositories选项下new一个新项目，注意项目名务必设置为自己的用户名-github-io来命名，例如我的账号名为void，则将项目名设为void-github-io即可。"><span class="toc-number">5.4.1.</span> <span class="toc-text">1.首先在repositories选项下new一个新项目，注意项目名务必设置为自己的用户名.github.io来命名，例如我的账号名为void，则将项目名设为void.github.io即可。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-配置本地项目下的-config-yml文件"><span class="toc-number">5.4.2.</span> <span class="toc-text">2.配置本地项目下的_config.yml文件</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"使用Hexo搭建属于自己的个人博客---配置上线篇　| Nick's Blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <div id="comment-box" ></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2016/07/13/使用Hexo搭建属于自己的个人博客-配置上线篇/" data-title="使用Hexo搭建属于自己的个人博客---配置上线篇" data-url="http://nickgo.com/2016/07/13/使用Hexo搭建属于自己的个人博客-配置上线篇/"></div>
+    <script>
+        var duoshuoQuery = {short_name:"nickgo"};
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            s.async = true; s.charset = 'UTF-8';
+            (d.head || d.body).appendChild(s);
+        }
+
+        
+    </script>
+    
+    <script> loadComment(); </script>
+
+</div>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/07/13/使用Hexo搭建属于自己的个人博客-主题插件篇/" title="上一篇: 使用Hexo搭建属于自己的个人博客---主题插件篇">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/07/08/hello-world/" title="下一篇: Hello World - new">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/13/使用Hexo搭建属于自己的个人博客-主题插件篇/">使用Hexo搭建属于自己的个人博客---主题插件篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/13/使用Hexo搭建属于自己的个人博客-配置上线篇/">使用Hexo搭建属于自己的个人博客---配置上线篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/08/hello-world/">Hello World - new</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/Javascript高级特性之call和apply/">Javascript高级特性之call和apply</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/18/Javascript高级特性之闭包/">Javascript高级特性之闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/17/如何直接在github上预览html效果/">如何直接在github上预览html效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/04/Git常用命令总结/">Git常用命令总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/31/my-new-post/">My New Post</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 Nick Chang
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 11;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
