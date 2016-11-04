@@ -4,9 +4,9 @@
   <subtitle>出发之前永远是梦想 上路之后永远是挑战</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://nickgo.com/"/>
-  <updated>2016-07-13T16:37:07.000Z</updated>
-  <id>http://nickgo.com/</id>
+  <link href="http://nickgo.net/"/>
+  <updated>2016-11-04T03:09:04.000Z</updated>
+  <id>http://nickgo.net/</id>
   
   <author>
     <name>Nick Chang</name>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>使用Hexo搭建属于自己的个人博客---主题插件篇</title>
-    <link href="http://nickgo.com/2016/07/13/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E4%B8%BB%E9%A2%98%E6%8F%92%E4%BB%B6%E7%AF%87/"/>
-    <id>http://nickgo.com/2016/07/13/使用Hexo搭建属于自己的个人博客-主题插件篇/</id>
+    <link href="http://nickgo.net/2016/07/13/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E4%B8%BB%E9%A2%98%E6%8F%92%E4%BB%B6%E7%AF%87/"/>
+    <id>http://nickgo.net/2016/07/13/使用Hexo搭建属于自己的个人博客-主题插件篇/</id>
     <published>2016-07-13T15:52:45.000Z</published>
-    <updated>2016-07-13T16:37:07.000Z</updated>
+    <updated>2016-11-04T03:09:04.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/3f808a7a287f032817226fa99939d761906e1944/687474703a2f2f6431753962697761786a6e6777672e636c6f756466726f6e742e6e65742f73686f7763617365732f73686f77636173652d76312e342e6a7067&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -54,17 +54,17 @@
     
     </summary>
     
-      <category term="网站搭建" scheme="http://nickgo.com/categories/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"/>
+      <category term="网站搭建" scheme="http://nickgo.net/categories/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"/>
     
     
-      <category term="Hexo" scheme="http://nickgo.com/tags/Hexo/"/>
+      <category term="Hexo" scheme="http://nickgo.net/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>使用Hexo搭建属于自己的个人博客---配置上线篇</title>
-    <link href="http://nickgo.com/2016/07/13/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E9%85%8D%E7%BD%AE%E4%B8%8A%E7%BA%BF%E7%AF%87/"/>
-    <id>http://nickgo.com/2016/07/13/使用Hexo搭建属于自己的个人博客-配置上线篇/</id>
+    <link href="http://nickgo.net/2016/07/13/%E4%BD%BF%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2-%E9%85%8D%E7%BD%AE%E4%B8%8A%E7%BA%BF%E7%AF%87/"/>
+    <id>http://nickgo.net/2016/07/13/使用Hexo搭建属于自己的个人博客-配置上线篇/</id>
     <published>2016-07-13T15:28:44.000Z</published>
     <updated>2016-07-13T16:38:16.000Z</updated>
     
@@ -143,44 +143,17 @@
     
     </summary>
     
-      <category term="网站搭建" scheme="http://nickgo.com/categories/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"/>
+      <category term="网站搭建" scheme="http://nickgo.net/categories/%E7%BD%91%E7%AB%99%E6%90%AD%E5%BB%BA/"/>
     
     
-      <category term="Hexo" scheme="http://nickgo.com/tags/Hexo/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World - new</title>
-    <link href="http://nickgo.com/2016/07/08/hello-world/"/>
-    <id>http://nickgo.com/2016/07/08/hello-world/</id>
-    <published>2016-07-08T11:20:28.000Z</published>
-    <updated>2016-07-08T14:53:38.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/0060lm7Tgw1f2jo610sk3j31hb0u0qkh.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;http://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo server&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo generate&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo deploy&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/0060lm7Tgw1f2jo610sk3j31hb0u0qkh.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;http://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;br&gt;
-    
-    </summary>
-    
+      <category term="Hexo" scheme="http://nickgo.net/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>Javascript高级特性之call和apply</title>
-    <link href="http://nickgo.com/2016/05/18/Javascript%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8Bcall%E5%92%8Capply/"/>
-    <id>http://nickgo.com/2016/05/18/Javascript高级特性之call和apply/</id>
+    <link href="http://nickgo.net/2016/05/18/Javascript%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8Bcall%E5%92%8Capply/"/>
+    <id>http://nickgo.net/2016/05/18/Javascript高级特性之call和apply/</id>
     <published>2016-05-18T11:57:08.000Z</published>
     <updated>2016-05-18T13:15:24.000Z</updated>
     
@@ -213,17 +186,17 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://nickgo.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="http://nickgo.net/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Javascript" scheme="http://nickgo.com/tags/Javascript/"/>
+      <category term="Javascript" scheme="http://nickgo.net/tags/Javascript/"/>
     
   </entry>
   
   <entry>
     <title>Javascript高级特性之闭包</title>
-    <link href="http://nickgo.com/2016/05/18/Javascript%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E9%97%AD%E5%8C%85/"/>
-    <id>http://nickgo.com/2016/05/18/Javascript高级特性之闭包/</id>
+    <link href="http://nickgo.net/2016/05/18/Javascript%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E9%97%AD%E5%8C%85/"/>
+    <id>http://nickgo.net/2016/05/18/Javascript高级特性之闭包/</id>
     <published>2016-05-18T11:56:02.000Z</published>
     <updated>2016-05-18T12:22:44.000Z</updated>
     
@@ -254,17 +227,48 @@
     
     </summary>
     
-      <category term="学习笔记" scheme="http://nickgo.com/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="http://nickgo.net/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Javascript" scheme="http://nickgo.com/tags/Javascript/"/>
+      <category term="Javascript" scheme="http://nickgo.net/tags/Javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo 操作指南</title>
+    <link href="http://nickgo.net/2016/05/18/Hexo%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/"/>
+    <id>http://nickgo.net/2016/05/18/Hexo操作指南/</id>
+    <published>2016-05-18T11:56:02.000Z</published>
+    <updated>2016-11-04T02:32:39.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/0060lm7Tgw1f2jo610sk3j31hb0u0qkh.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;http://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo server&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo generate&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ hexo deploy&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://ww2.sinaimg.cn/large/0060lm7Tgw1f2jo610sk3j31hb0u0qkh.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;http://hexo.io/docs/troubleshooting.html&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot;&gt;GitHub&lt;/a&gt;.&lt;br&gt;
+    
+    </summary>
+    
+      <category term="操作指南" scheme="http://nickgo.net/categories/%E6%93%8D%E4%BD%9C%E6%8C%87%E5%8D%97/"/>
+    
+    
+      <category term="Hexo" scheme="http://nickgo.net/tags/Hexo/"/>
     
   </entry>
   
   <entry>
     <title>如何直接在github上预览html效果</title>
-    <link href="http://nickgo.com/2016/04/17/%E5%A6%82%E4%BD%95%E7%9B%B4%E6%8E%A5%E5%9C%A8github%E4%B8%8A%E9%A2%84%E8%A7%88html%E6%95%88%E6%9E%9C/"/>
-    <id>http://nickgo.com/2016/04/17/如何直接在github上预览html效果/</id>
+    <link href="http://nickgo.net/2016/04/17/%E5%A6%82%E4%BD%95%E7%9B%B4%E6%8E%A5%E5%9C%A8github%E4%B8%8A%E9%A2%84%E8%A7%88html%E6%95%88%E6%9E%9C/"/>
+    <id>http://nickgo.net/2016/04/17/如何直接在github上预览html效果/</id>
     <published>2016-04-17T06:16:35.000Z</published>
     <updated>2016-04-17T07:02:32.000Z</updated>
     
@@ -292,17 +296,17 @@
     
     </summary>
     
-      <category term="实用技巧" scheme="http://nickgo.com/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
+      <category term="实用技巧" scheme="http://nickgo.net/categories/%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7/"/>
     
     
-      <category term="github" scheme="http://nickgo.com/tags/github/"/>
+      <category term="github" scheme="http://nickgo.net/tags/github/"/>
     
   </entry>
   
   <entry>
     <title>Git常用命令总结</title>
-    <link href="http://nickgo.com/2016/04/04/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
-    <id>http://nickgo.com/2016/04/04/Git常用命令总结/</id>
+    <link href="http://nickgo.net/2016/04/04/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
+    <id>http://nickgo.net/2016/04/04/Git常用命令总结/</id>
     <published>2016-04-03T16:30:28.000Z</published>
     <updated>2016-04-03T16:48:56.000Z</updated>
     
@@ -398,17 +402,17 @@
     
     </summary>
     
-      <category term="笔记" scheme="http://nickgo.com/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="笔记" scheme="http://nickgo.net/categories/%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="git" scheme="http://nickgo.com/tags/git/"/>
+      <category term="git" scheme="http://nickgo.net/tags/git/"/>
     
   </entry>
   
   <entry>
     <title>My New Post</title>
-    <link href="http://nickgo.com/2016/03/31/my-new-post/"/>
-    <id>http://nickgo.com/2016/03/31/my-new-post/</id>
+    <link href="http://nickgo.net/2016/03/31/my-new-post/"/>
+    <id>http://nickgo.net/2016/03/31/my-new-post/</id>
     <published>2016-03-31T14:59:10.000Z</published>
     <updated>2016-04-03T09:50:20.000Z</updated>
     
@@ -422,10 +426,10 @@
     
     </summary>
     
-      <category term="test" scheme="http://nickgo.com/categories/test/"/>
+      <category term="test" scheme="http://nickgo.net/categories/test/"/>
     
     
-      <category term="博客，测试" scheme="http://nickgo.com/tags/%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%B5%8B%E8%AF%95/"/>
+      <category term="博客，测试" scheme="http://nickgo.net/tags/%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
