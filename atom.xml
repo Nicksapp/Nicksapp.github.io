@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://nickgo.net/"/>
-  <updated>2016-11-04T13:32:06.000Z</updated>
+  <updated>2016-11-05T12:54:09.000Z</updated>
   <id>http://nickgo.net/</id>
   
   <author>
@@ -14,6 +14,97 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript ES6(ES2015+) 核心功能总结</title>
+    <link href="http://nickgo.net/2016/11/05/JavaScript-ES6-ES2015-%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD%E6%80%BB%E7%BB%93/"/>
+    <id>http://nickgo.net/2016/11/05/JavaScript-ES6-ES2015-核心功能总结/</id>
+    <published>2016-11-05T12:50:03.000Z</published>
+    <updated>2016-11-05T12:54:09.000Z</updated>
+    
+    <content type="html">&lt;p&gt;&lt;img src=&quot;http://www.improgrammer.net/wp-content/uploads/2016/03/Pasted-image-at-2016_02_26-01_26-PM-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;JavaScript 在过去几年里发生了很大的变化。今天介绍几个 ES6 你不得不知道的新功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;h3 id=&quot;ES6发展史及趋势&quot;&gt;&lt;a href=&quot;#ES6发展史及趋势&quot; class=&quot;headerlink&quot; title=&quot;ES6发展史及趋势&quot;&gt;&lt;/a&gt;ES6发展史及趋势&lt;/h3&gt;&lt;p&gt;ECMAScript 6.0（以下简称ES6）是JavaScript语言的下一代标准，已经在2015年6月正式发布了。它的目标，是使得JavaScript语言可以用来编写复杂的大型应用程序，成为企业级开发语言。&lt;/p&gt;
+&lt;p&gt;新的语言规范被称作 ECMAScript 6。也称为 ES6 或 ES2015+ 。&lt;/p&gt;
+&lt;p&gt;自从 1995 年 JavaScript 诞生以来，它一直在缓慢地发展。每隔几年就会增加一些新内容。1997 年，ECMAScript 成为 JavaScript 语言实现的规范。它已经有了好几个版本，比如 ES3 , ES5 , ES6 等等。&lt;br&gt;&lt;img src=&quot;http://of30nsqpd.bkt.clouddn.com/md/01/ES6_01.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;Chrome，MS Edge，Firefox，Safari，Node 和许多其他的环境都已内置支持大多数的 JavaScript ES6 功能。可见 ES6 已经逐渐被广大开发者和开发商所普遍认可和接受的，所以也该及时更新自己的JavaScript技能了。&lt;/p&gt;
+&lt;h3 id=&quot;变量的块级作用域&quot;&gt;&lt;a href=&quot;#变量的块级作用域&quot; class=&quot;headerlink&quot; title=&quot;变量的块级作用域&quot;&gt;&lt;/a&gt;变量的块级作用域&lt;/h3&gt;&lt;p&gt;使用 ES6 ,声明变量我们可以使用 let 或 const。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;var&lt;/code&gt;与&lt;code&gt;let&lt;/code&gt;和&lt;code&gt;const&lt;/code&gt;的区别我们先来看看：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;首先 &lt;code&gt;var&lt;/code&gt;有什么不足？ 使用 &lt;code&gt;var&lt;/code&gt;的问题是变量会漏入其他代码块，诸如 &lt;code&gt;for&lt;/code&gt;循环&lt;code&gt;if&lt;/code&gt;代码块中。 而&lt;code&gt;let&lt;/code&gt;声明的变量只在&lt;code&gt;let&lt;/code&gt;命令所在的代码块有效。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; b = &lt;span class=&quot;number&quot;&gt;20&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;a &lt;span class=&quot;comment&quot;&gt;// ReferenceError: a is not defined.&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;b &lt;span class=&quot;comment&quot;&gt;// 1&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;let&lt;/code&gt;不会像 &lt;code&gt;var&lt;/code&gt;存在变量提升的情况&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(foo); &lt;span class=&quot;comment&quot;&gt;// 输出undefined&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(bar); &lt;span class=&quot;comment&quot;&gt;// 报错ReferenceError&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; foo = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; bar = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;上面代码中，变量&lt;code&gt;foo&lt;/code&gt;用&lt;code&gt;var&lt;/code&gt;命令声明，会发生变量提升，即脚本开始运行时，变量&lt;code&gt;foo&lt;/code&gt;已经存在了，但是没有值，所以会输出&lt;code&gt;undefined&lt;/code&gt;。变量&lt;code&gt;bar&lt;/code&gt;用&lt;code&gt;let&lt;/code&gt;命令声明，不会发生变量提升。这表示在声明它之前，变量&lt;code&gt;bar&lt;/code&gt;是不存在的，这时如果用到它，就会抛出一个错误。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;const声明一个只读的常量。一旦声明，常量的值就不能改变。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总结&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在 ES6 中，let 将变量提升到代码块的顶部（不是像 ES5 那样的函数顶部）。&lt;/li&gt;
+&lt;li&gt;然而，代码块中，在变量声明之前引用它会导致 ReferenceError 错误。&lt;/li&gt;
+&lt;li&gt;let 是块级作用域。你不能在它被声明之前引用它。&lt;/li&gt;
+&lt;li&gt;“暂存死区（Temporal dead zone）”是指从代码块开始直到变量被声明之间的区域。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;模板字面量&quot;&gt;&lt;a href=&quot;#模板字面量&quot; class=&quot;headerlink&quot; title=&quot;模板字面量&quot;&gt;&lt;/a&gt;模板字面量&lt;/h3&gt;&lt;p&gt;现在你可以使用反引号 (`) 和字符串插值 ${}：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; first = &lt;span class=&quot;string&quot;&gt;&#39;Anna&#39;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; last = &lt;span class=&quot;string&quot;&gt;&#39;Mejia&#39;&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;string&quot;&gt;`Your name is &lt;span class=&quot;subst&quot;&gt;$&amp;#123;first&amp;#125;&lt;/span&gt; &lt;span class=&quot;subst&quot;&gt;$&amp;#123;last&amp;#125;&lt;/span&gt;.`&lt;/span&gt;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;变量的解构赋值&quot;&gt;&lt;a href=&quot;#变量的解构赋值&quot; class=&quot;headerlink&quot; title=&quot;变量的解构赋值&quot;&gt;&lt;/a&gt;变量的解构赋值&lt;/h3&gt;&lt;p&gt;ES6允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。&lt;/p&gt;
+&lt;p&gt;以前，为变量赋值，只能直接指定值。ES6允许写成以下这种形式。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 数组的解构赋值&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; [a, b, c] = [&lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;3&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;a &lt;span class=&quot;comment&quot;&gt;// 1&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;b &lt;span class=&quot;comment&quot;&gt;// 2&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;c &lt;span class=&quot;comment&quot;&gt;// 3&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// 交换值&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; a = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;let&lt;/span&gt; b = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;[a, b] = [b, a];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(a, b); &lt;span class=&quot;comment&quot;&gt;// 2 1&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;figure class=&quot;highlight armasm&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;//对象的解构赋值&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;var&lt;/span&gt; &amp;#123; &lt;span class=&quot;keyword&quot;&gt;bar, &lt;/span&gt;foo &amp;#125; = &amp;#123; foo: &lt;span class=&quot;string&quot;&gt;&quot;aaa&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;bar: &lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;bbb&quot;&lt;/span&gt; &amp;#125;&lt;span class=&quot;comment&quot;&gt;;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;foo&lt;/span&gt; // &lt;span class=&quot;string&quot;&gt;&quot;aaa&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;bar &lt;/span&gt;// &lt;span class=&quot;string&quot;&gt;&quot;bbb&quot;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;symbol&quot;&gt;var&lt;/span&gt; &amp;#123; &lt;span class=&quot;keyword&quot;&gt;baz &lt;/span&gt;&amp;#125; = &amp;#123; foo: &lt;span class=&quot;string&quot;&gt;&quot;aaa&quot;&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;bar: &lt;/span&gt;&lt;span class=&quot;string&quot;&gt;&quot;bbb&quot;&lt;/span&gt; &amp;#125;&lt;span class=&quot;comment&quot;&gt;;&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;baz &lt;/span&gt;// undefined&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;最佳实践：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用数组解构去获取元素或交换值。它可以避免创建临时引用。&lt;/li&gt;
+&lt;li&gt;不要对多个返回值使用数组解构，而是要用对象解构。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;类和对象&quot;&gt;&lt;a href=&quot;#类和对象&quot; class=&quot;headerlink&quot; title=&quot;类和对象&quot;&gt;&lt;/a&gt;类和对象&lt;/h3&gt;&lt;p&gt;在 JavaScript 中，每个对象都有一个原型对象。所有的 JavaScript 对象都从它们的原型对象那里继承方法和属性。&lt;/p&gt;
+&lt;p&gt;在 ES5 中，为了实现面向对象编程（OOP），我们使用构造函数来创建对象，如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// ES5&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; Animal = (&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;MyConstructor&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;name&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    MyConstructor.prototype.speak = &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;speak&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name + &lt;span class=&quot;string&quot;&gt;&#39; makes a noise.&#39;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; MyConstructor;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;)();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; animal = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Animal(&lt;span class=&quot;string&quot;&gt;&#39;animal&#39;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;animal.speak(); &lt;span class=&quot;comment&quot;&gt;// animal makes a noise.&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;ES6 中有了一些语法糖。通过像 class 和 constructor 这样的关键字和减少样板代码，我们可以做到同样的事情。另外，speak() 相对照 constructor.prototype.speak = function () 更加清晰：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// ES6&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Animal&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;constructor&lt;/span&gt;(name) &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name = name;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    speak() &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name + &lt;span class=&quot;string&quot;&gt;&#39; makes a noise.&#39;&lt;/span&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; animal = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Animal(&lt;span class=&quot;string&quot;&gt;&#39;animal&#39;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;animal.speak(); &lt;span class=&quot;comment&quot;&gt;// animal makes a noise.&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;最终表达出来的效果也是一致的。&lt;br&gt;最佳实践：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;总是使用 class 语法并避免直接直接操纵 prototype。为什么？因为它让代码更加简洁和易于理解。&lt;/li&gt;
+&lt;li&gt;避免使用空的构造函数。如果没有指定，类有一个默认的构造函数。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;继承&quot;&gt;&lt;a href=&quot;#继承&quot; class=&quot;headerlink&quot; title=&quot;继承&quot;&gt;&lt;/a&gt;继承&lt;/h4&gt;&lt;p&gt;基于前面的 Animal 类。 让我们扩展它并定义一个 Lion 类。&lt;/p&gt;
+&lt;p&gt;在 ES5 中，它更多的与原型继承有关。而在ES6中，我们有了新关键词 &lt;code&gt;extends&lt;/code&gt; 和 &lt;code&gt;super&lt;/code&gt;,有没有一点 java 的感觉–。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// ES6 &lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Lion&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;extends&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;Animal&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    speak() &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt;.speak();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.name + &lt;span class=&quot;string&quot;&gt;&#39; roars~.&#39;&lt;/span&gt;)&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; lion = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Lion(&lt;span class=&quot;string&quot;&gt;&#39;Simba&#39;&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;lion.speak(); &lt;span class=&quot;comment&quot;&gt;// Simba makes a noise. Simba roars&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;原生Promises&quot;&gt;&lt;a href=&quot;#原生Promises&quot; class=&quot;headerlink&quot; title=&quot;原生Promises&quot;&gt;&lt;/a&gt;原生Promises&lt;/h3&gt;&lt;p&gt;从回调地狱到Promises&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;// ES5&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;printAfterTimeOut&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;string, timeout, done&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    setTimeout(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        done(string);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;, timeout);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;printAfterTimeout(&lt;span class=&quot;string&quot;&gt;&#39;Hello&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2e3&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;result&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(result);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;//嵌套回调&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    printAfterTimeout(result + &lt;span class=&quot;string&quot;&gt;&#39;Reader&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2e3&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;result&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(result);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;我们有一个接收一个回调的函数，当 done 时执行。我们必须一个接一个地执行它两次。这也是为什么我们在回调中第二次调用 printAfterTimeout 的原因。&lt;/p&gt;
+&lt;p&gt;如果你需要第 3 次或第 4 次回调，可能很快就会变得混乱。来看看我们用 promises 的写法：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//ES6&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;printAfterTimeout&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;string, timeout&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;built_in&quot;&gt;Promise&lt;/span&gt;((resolve, reject) =&amp;gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        setTimeout(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;            resolve(string);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;        &amp;#125;, timeout);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;printAfterTimeout(&lt;span class=&quot;string&quot;&gt;&#39;Hello&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2e3&lt;/span&gt;).then((result) =&amp;gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(result);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; printAfterTimeout(result + &lt;span class=&quot;string&quot;&gt;&#39;Reader&#39;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;2e3&lt;/span&gt;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;).then((result) =&amp;gt; &amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(result);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;箭头函数&quot;&gt;&lt;a href=&quot;#箭头函数&quot; class=&quot;headerlink&quot; title=&quot;箭头函数&quot;&gt;&lt;/a&gt;箭头函数&lt;/h3&gt;&lt;p&gt;在ES5z中，对于函数中 this 我们有一些问题一直存在：&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//ES5&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; that = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;; &lt;span class=&quot;comment&quot;&gt;//保持一个引用&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;.btn&#39;&lt;/span&gt;).onclick(&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;event&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    that.sendData(); &lt;span class=&quot;comment&quot;&gt;//引用外层的 this&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;.input&#39;&lt;/span&gt;).on(&lt;span class=&quot;string&quot;&gt;&#39;change&#39;&lt;/span&gt;, &lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;event&lt;/span&gt;)&lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.sendData(); &lt;span class=&quot;comment&quot;&gt;//引用绑定的 this&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;.bind(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;));  &lt;span class=&quot;comment&quot;&gt;//绑定到外层的 this&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;你需要使用一个临时的 this 在函数内部进行引用或用 bind 绑定。在 ES6 中，你可以用箭头函数。&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//ES6&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$(&lt;span class=&quot;string&quot;&gt;&#39;.btn&#39;&lt;/span&gt;).click((event) =&amp;gt; &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;.sendData());&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//隐式返回&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; ids = [&lt;span class=&quot;number&quot;&gt;123&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;455&lt;/span&gt;,&lt;span class=&quot;number&quot;&gt;789&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; messages = ids.map(value =&amp;gt; &lt;span class=&quot;string&quot;&gt;`ID is &lt;span class=&quot;subst&quot;&gt;$&amp;#123;value&amp;#125;&lt;/span&gt;`&lt;/span&gt;);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;for-…of&quot;&gt;&lt;a href=&quot;#for-…of&quot; class=&quot;headerlink&quot; title=&quot;for …of&quot;&gt;&lt;/a&gt;for …of&lt;/h3&gt;&lt;p&gt;ES6 新增for …of实现迭代操作&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//ES6&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; array = [&lt;span class=&quot;string&quot;&gt;&#39;a&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;b&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;c&#39;&lt;/span&gt;,&lt;span class=&quot;string&quot;&gt;&#39;d&#39;&lt;/span&gt;];&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;for&lt;/span&gt;(&lt;span class=&quot;keyword&quot;&gt;const&lt;/span&gt; element &lt;span class=&quot;keyword&quot;&gt;of&lt;/span&gt; array)&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(element);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;&lt;a href=&quot;http://es6.ruanyifeng.com/#docs/style&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;想知道更多ES6新特性快点我！&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;img src=&quot;http://www.improgrammer.net/wp-content/uploads/2016/03/Pasted-image-at-2016_02_26-01_26-PM-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;JavaScript 在过去几年里发生了很大的变化。今天介绍几个 ES6 你不得不知道的新功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+      <category term="学习笔记" scheme="http://nickgo.net/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="JavaScript" scheme="http://nickgo.net/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>一些想说的话，一些仍然想要达到的小目标</title>
@@ -193,7 +284,7 @@
     <link href="http://nickgo.net/2016/05/18/Javascript%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8Bcall%E5%92%8Capply/"/>
     <id>http://nickgo.net/2016/05/18/Javascript高级特性之call和apply/</id>
     <published>2016-05-18T11:57:08.000Z</published>
-    <updated>2016-05-18T13:15:24.000Z</updated>
+    <updated>2016-11-05T12:51:25.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/0060lm7Tgw1f3zt6vfykkj308y04cglr.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -227,7 +318,7 @@
       <category term="学习笔记" scheme="http://nickgo.net/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Javascript" scheme="http://nickgo.net/tags/Javascript/"/>
+      <category term="JavaScript" scheme="http://nickgo.net/tags/JavaScript/"/>
     
   </entry>
   
@@ -267,7 +358,7 @@
     <link href="http://nickgo.net/2016/05/18/Javascript%E9%AB%98%E7%BA%A7%E7%89%B9%E6%80%A7%E4%B9%8B%E9%97%AD%E5%8C%85/"/>
     <id>http://nickgo.net/2016/05/18/Javascript高级特性之闭包/</id>
     <published>2016-05-18T11:56:02.000Z</published>
-    <updated>2016-05-18T12:22:44.000Z</updated>
+    <updated>2016-11-05T12:51:20.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;http://ww1.sinaimg.cn/large/0060lm7Tgw1f3zslcb9f5j309o05d74c.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -299,7 +390,7 @@
       <category term="学习笔记" scheme="http://nickgo.net/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
-      <category term="Javascript" scheme="http://nickgo.net/tags/Javascript/"/>
+      <category term="JavaScript" scheme="http://nickgo.net/tags/JavaScript/"/>
     
   </entry>
   
@@ -346,7 +437,7 @@
     <link href="http://nickgo.net/2016/04/04/Git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
     <id>http://nickgo.net/2016/04/04/Git常用命令总结/</id>
     <published>2016-04-03T16:30:28.000Z</published>
-    <updated>2016-04-03T16:48:56.000Z</updated>
+    <updated>2016-11-05T12:50:54.000Z</updated>
     
     <content type="html">&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/0060lm7Tgw1f2jzaz7beqj30cn05ajrq.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
@@ -440,34 +531,10 @@
     
     </summary>
     
-      <category term="笔记" scheme="http://nickgo.net/categories/%E7%AC%94%E8%AE%B0/"/>
+      <category term="学习笔记" scheme="http://nickgo.net/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
     
     
       <category term="git" scheme="http://nickgo.net/tags/git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>My New Post</title>
-    <link href="http://nickgo.net/2016/03/31/my-new-post/"/>
-    <id>http://nickgo.net/2016/03/31/my-new-post/</id>
-    <published>2016-03-31T14:59:10.000Z</published>
-    <updated>2016-04-03T09:50:20.000Z</updated>
-    
-    <content type="html">&lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/0060lm7Tgw1f2jno83esjj311y0lcq5o.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;认识hexo&quot;&gt;&lt;a href=&quot;#认识hexo&quot; class=&quot;headerlink&quot; title=&quot;认识hexo&quot;&gt;&lt;/a&gt;认识hexo&lt;/h2&gt;&lt;p&gt;hexo是一款基于Node.js的静态博客框架，可以生成静态文件并且一键部署到github pages上，并且他可以使用markdown来编写文章，十分简单。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;img src=&quot;http://ww4.sinaimg.cn/large/0060lm7Tgw1f2jno83esjj311y0lcq5o.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="test" scheme="http://nickgo.net/categories/test/"/>
-    
-    
-      <category term="博客，测试" scheme="http://nickgo.net/tags/%E5%8D%9A%E5%AE%A2%EF%BC%8C%E6%B5%8B%E8%AF%95/"/>
     
   </entry>
   
