@@ -1,0 +1,937 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="RESTful,Api,Nodejs,MongoDB," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Nick's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.png?v=5.0.2" />
+
+
+
+
+
+
+<meta name="description" content="最近在新的项目中开发中需要使用到RESTful API的对接IOS与Android应用开发，所以一不小心就踩进了REST的坑里面……在开发过程中还是有许多收货的。这次就来看看API设计中的token的思路与实践。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node.js+Mongoose的RestfulApi的用户token权限验证篇">
+<meta property="og:url" content="http://nickgo.net/2016/12/01/基于Node-js-Mongoose的RestfulApi开发用户注册验证篇/index.html">
+<meta property="og:site_name" content="Nick's Blog">
+<meta property="og:description" content="最近在新的项目中开发中需要使用到RESTful API的对接IOS与Android应用开发，所以一不小心就踩进了REST的坑里面……在开发过程中还是有许多收货的。这次就来看看API设计中的token的思路与实践。">
+<meta property="og:image" content="http://aliu.oss-cn-hangzhou.aliyuncs.com/blogs/objc/images/201611/07/restful_api_logo.jpg">
+<meta property="og:image" content="http://of30nsqpd.bkt.clouddn.com/Snip20161201_2.png">
+<meta property="og:image" content="http://of30nsqpd.bkt.clouddn.com/Snip20161201_4.png">
+<meta property="og:image" content="http://of30nsqpd.bkt.clouddn.com/Snip20161201_5.png">
+<meta property="og:image" content="http://of30nsqpd.bkt.clouddn.com/Snip20161201_6.png">
+<meta property="og:image" content="http://of30nsqpd.bkt.clouddn.com/Snip20161201_11.png">
+<meta property="og:image" content="http://of30nsqpd.bkt.clouddn.com/Snip20161201_9.png">
+<meta property="og:image" content="http://of30nsqpd.bkt.clouddn.com/Snip20161201_10.png">
+<meta property="og:updated_time" content="2016-12-01T10:00:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node.js+Mongoose的RestfulApi的用户token权限验证篇">
+<meta name="twitter:description" content="最近在新的项目中开发中需要使用到RESTful API的对接IOS与Android应用开发，所以一不小心就踩进了REST的坑里面……在开发过程中还是有许多收货的。这次就来看看API设计中的token的思路与实践。">
+<meta name="twitter:image" content="http://aliu.oss-cn-hangzhou.aliyuncs.com/blogs/objc/images/201611/07/restful_api_logo.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://nickgo.net/2016/12/01/基于Node-js-Mongoose的RestfulApi开发用户注册验证篇/"/>
+
+
+  <title> Node.js+Mongoose的RestfulApi的用户token权限验证篇 | Nick's Blog </title>
+</head>
+
+<body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?9995f87b6c301db48bea7140dc46f77d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="//schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Nick's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">出发之前永远是梦想 上路之后永远是挑战</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Node.js+Mongoose的RestfulApi的用户token权限验证篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-01T15:32:22+08:00" content="2016-12-01">
+              2016-12-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/教程/" itemprop="url" rel="index">
+                    <span itemprop="name">教程</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/01/基于Node-js-Mongoose的RestfulApi开发用户注册验证篇/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/01/基于Node-js-Mongoose的RestfulApi开发用户注册验证篇/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/01/基于Node-js-Mongoose的RestfulApi开发用户注册验证篇/" class="leancloud_visitors" data-flag-title="Node.js+Mongoose的RestfulApi的用户token权限验证篇">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://aliu.oss-cn-hangzhou.aliyuncs.com/blogs/objc/images/201611/07/restful_api_logo.jpg" alt=""></p>
+<blockquote>
+<p>最近在新的项目中开发中需要使用到RESTful API的对接IOS与Android应用开发，所以一不小心就踩进了REST的坑里面……在开发过程中还是有许多收货的。<strong>这次就来看看API设计中的token的思路与实践</strong>。</p>
+</blockquote>
+<a id="more"></a>
+<h2 id="关于RESTful-API"><a href="#关于RESTful-API" class="headerlink" title="关于RESTful API"></a>关于RESTful API</h2><p>网上已经有了很多关于RESTful的介绍，我这里也不过多重复了。想说的就是它的主要作用，就是对于现如今的网络应用程序，分为前端和后端两个部分，然而当前的发展趋势就是应用平台需求的扩大(IOS、Android、Webapp等等)</p>
+<p>因此，就需要一种统一的机制，方便不同的应用平台的前端设备与后端进行通信，也就是前后端的分离。这导致了API架构的流行，甚至出现”API First”的设计思想。RESTful API则是目前比较成熟的一套互联网应用程序的API设计理论。</p>
+<h2 id="API设计中的token的思路"><a href="#API设计中的token的思路" class="headerlink" title="API设计中的token的思路"></a>API设计中的token的思路</h2><p>在API设计中,TOKEN用来判断用户是否有权限访问API.TOKEN首先不需要编解码处理. 一般TOKEN都是一些用户名+时间等内容的MD5的不可逆加密.然后通过一个USER_TOKEN表来判断用户请求中包含的TOKEN与USER_TOKEN表中的TOKEN是否一致即可. </p>
+<p>具体实践过程主要为:</p>
+<ol>
+<li>设定一个密钥比如key = ‘2323dsfadfewrasa3434’。</li>
+<li>这个key 只有发送方和接收方知道。</li>
+<li>调用时，发送方，组合各个参数用密钥 key按照一定的规则(各种排序，MD5，ip等)生成一个access_key。一起post提交到API接口。</li>
+<li>接收方拿到post过来的参数以及这个access_key。也和发送一样，用密钥key 对各个参数进行一样的规则(各种排序，MD5，ip等)也生成一个access_key2。</li>
+<li>对比 access_key 和 access_key2 。一样。则允许操作，不一样，报错返回或者加入黑名单。</li>
+</ol>
+<h2 id="token设计具体实践"><a href="#token设计具体实践" class="headerlink" title="token设计具体实践"></a>token设计具体实践</h2><blockquote>
+<p>废话不多说，先进入看我们的干货，这次选用Node.js+experss配合Mongoose来进入REST的token实践</p>
+</blockquote>
+<p>项目地址: <a href="https://github.com/Nicksapp/nAuth-restful-api" target="_blank" rel="external">GitHub地址</a></p>
+<p>或 <code>git clone https://github.com/Nicksapp/nAuth-restful-api.git</code></p>
+<h3 id="整体构架"><a href="#整体构架" class="headerlink" title="整体构架"></a>整体构架</h3><p>开发前先进行我们设计的构想</p>
+<ul>
+<li><p>路由设计</p>
+<ul>
+<li>POST /api/signup: 用户注册</li>
+<li>POST /api/user/accesstoken: 账号验证,获取token</li>
+<li>GET /api/user/user_info: 获得用户信息,需验证</li>
+</ul>
+</li>
+<li><p>user 模型设计</p>
+<ul>
+<li>name : 用户名</li>
+<li>password: 密码</li>
+<li>token: 验证相关token</li>
+</ul>
+</li>
+</ul>
+<h3 id="新建项目"><a href="#新建项目" class="headerlink" title="新建项目"></a>新建项目</h3><p>先看看我们的项目文件夹</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">- routes/</div><div class="line">---- index.js</div><div class="line">---- users.js</div><div class="line">- models/</div><div class="line">---- user.js</div><div class="line">- config.js</div><div class="line">- package.json</div><div class="line">- passport.js</div><div class="line">- index.js</div></pre></td></tr></table></figure>
+<p><code>npm init</code>创建我们的<code>package.json</code></p>
+<p>接着在项目根文件夹下安装我们所需的依赖</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm <span class="keyword">install </span>express <span class="keyword">body-parser </span>morgan mongoose <span class="keyword">jsonwebtoken </span><span class="keyword">bcrypt </span>passport passport-http-<span class="keyword">bearer </span>--save</div></pre></td></tr></table></figure>
+<ul>
+<li>express: 我们的主要开发框架</li>
+<li>mongoose: 用来与MongoDB数据库进行交互的框架，请提前安装好MongoDB在PC上</li>
+<li>morgan: 会将程序请求过程的信息显示在Terminal中，以便于我们调试代码</li>
+<li>jsonwebtoken: 用来生成我们的token</li>
+<li>passport: 非常流行的权限验证库</li>
+<li>bcrypt: 对用户密码进行hash加密</li>
+</ul>
+<p>– save会将我们安装的库文件写入<code>package.json</code>的依赖中,以便其他人打开项目是能够正确安装所需依赖.</p>
+<h3 id="用户模型"><a href="#用户模型" class="headerlink" title="用户模型"></a>用户模型</h3><p>定义我们所需用户模型，用于moogoose，新建<code>models/user.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</div><div class="line"><span class="keyword">const</span> Schema = mongoose.Schema;</div><div class="line"><span class="keyword">const</span> bcrypt = <span class="built_in">require</span>(<span class="string">'bcrypt'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> UserSchema = <span class="keyword">new</span> Schema(&#123;</div><div class="line">  name: &#123;</div><div class="line">    type: <span class="built_in">String</span>,</div><div class="line">    unique: <span class="literal">true</span>, <span class="comment">// 不可重复约束</span></div><div class="line">    <span class="built_in">require</span>: <span class="literal">true</span> <span class="comment">// 不可为空约束</span></div><div class="line">  &#125;,</div><div class="line">  password: &#123;</div><div class="line">    type: <span class="built_in">String</span>,</div><div class="line">    <span class="built_in">require</span>: <span class="literal">true</span></div><div class="line">  &#125;,</div><div class="line">  token: &#123;</div><div class="line">    type: <span class="built_in">String</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 添加用户保存时中间件对password进行bcrypt加密,这样保证用户密码只有用户本人知道</span></div><div class="line">UserSchema.pre(<span class="string">'save'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">next</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> user = <span class="keyword">this</span>;</div><div class="line">    <span class="keyword">if</span> (<span class="keyword">this</span>.isModified(<span class="string">'password'</span>) || <span class="keyword">this</span>.isNew) &#123;</div><div class="line">        bcrypt.genSalt(<span class="number">10</span>, <span class="function"><span class="keyword">function</span> (<span class="params">err, salt</span>) </span>&#123;</div><div class="line">            <span class="keyword">if</span> (err) &#123;</div><div class="line">                <span class="keyword">return</span> next(err);</div><div class="line">            &#125;</div><div class="line">            bcrypt.hash(user.password, salt, <span class="function"><span class="keyword">function</span> (<span class="params">err, hash</span>) </span>&#123;</div><div class="line">                <span class="keyword">if</span> (err) &#123;</div><div class="line">                    <span class="keyword">return</span> next(err);</div><div class="line">                &#125;</div><div class="line">                user.password = hash;</div><div class="line">                next();</div><div class="line">            &#125;);</div><div class="line">        &#125;);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> next();</div><div class="line">    &#125;</div><div class="line">&#125;);</div><div class="line"><span class="comment">// 校验用户输入密码是否正确</span></div><div class="line">UserSchema.methods.comparePassword = <span class="function"><span class="keyword">function</span>(<span class="params">passw, cb</span>) </span>&#123;</div><div class="line">    bcrypt.compare(passw, <span class="keyword">this</span>.password, (err, isMatch) =&gt; &#123;</div><div class="line">        <span class="keyword">if</span> (err) &#123;</div><div class="line">            <span class="keyword">return</span> cb(err);</div><div class="line">        &#125;</div><div class="line">        cb(<span class="literal">null</span>, isMatch);</div><div class="line">    &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = mongoose.model(<span class="string">'User'</span>, UserSchema);</div></pre></td></tr></table></figure>
+<h3 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h3><p><code>./config.js</code> 用来配置我们的MongoDB数据库连接和token的密钥。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="string">'secret'</span>: <span class="string">'learnRestApiwithNickjs'</span>, <span class="comment">// used when we create and verify JSON Web Tokens</span></div><div class="line">  <span class="string">'database'</span>: <span class="string">'mongodb://localhost:27017/test'</span> <span class="comment">// 填写本地自己 mongodb 连接地址,xxx为数据表名</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="本地服务器配置"><a href="#本地服务器配置" class="headerlink" title="本地服务器配置"></a>本地服务器配置</h3><p><code>./index.js</code> 服务器配置文件，也是程序的入口。</p>
+<p>这里我们主要用来包含我们程序需要加载的库文件，调用初始化程序所需要的依赖。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">const</span> app = express();</div><div class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>);<span class="comment">// 解析body字段模块</span></div><div class="line"><span class="keyword">const</span> morgan = <span class="built_in">require</span>(<span class="string">'morgan'</span>); <span class="comment">// 命令行log显示</span></div><div class="line"><span class="keyword">const</span> mongoose = <span class="built_in">require</span>(<span class="string">'mongoose'</span>);</div><div class="line"><span class="keyword">const</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>);<span class="comment">// 用户认证模块passport</span></div><div class="line"><span class="keyword">const</span> Strategy = <span class="built_in">require</span>(<span class="string">'passport-http-bearer'</span>).Strategy;<span class="comment">// token验证模块</span></div><div class="line"><span class="keyword">const</span> routes = <span class="built_in">require</span>(<span class="string">'./routes'</span>);</div><div class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">'./config'</span>);</div><div class="line"></div><div class="line"><span class="keyword">let</span> port = process.env.PORT || <span class="number">8080</span>;</div><div class="line"></div><div class="line">app.use(passport.initialize());<span class="comment">// 初始化passport模块</span></div><div class="line">app.use(morgan(<span class="string">'dev'</span>));<span class="comment">// 命令行中显示程序运行日志,便于bug调试</span></div><div class="line">app.use(bodyParser.urlencoded(&#123; extended: <span class="literal">false</span> &#125;));</div><div class="line">app.use(bodyParser.json()); <span class="comment">// 调用bodyParser模块以便程序正确解析body传入值</span></div><div class="line"></div><div class="line">routes(app); <span class="comment">// 路由引入</span></div><div class="line"></div><div class="line">mongoose.Promise = global.Promise;</div><div class="line">mongoose.connect(config.database); <span class="comment">// 连接数据库</span></div><div class="line"></div><div class="line">app.listen(port, () =&gt; &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'listening on port : '</span> + port);</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h3 id="路由配置"><a href="#路由配置" class="headerlink" title="路由配置"></a>路由配置</h3><p><code>./routes</code> 主要存放路由相关文件</p>
+<p><code>./routes/index.js</code> 路由总入口，引入所使用路由</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = (app) =&gt; &#123;</div><div class="line">  app.get(<span class="string">'/'</span>, (req, res) =&gt; &#123;</div><div class="line">    res.json(&#123; message: <span class="string">'hello index!'</span>&#125;);</div><div class="line">  &#125;);</div><div class="line"></div><div class="line">  app.use(<span class="string">'/api'</span>, <span class="built_in">require</span>(<span class="string">'./users'</span>)); <span class="comment">// 在所有users路由前加/api</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p><code>./routes/users.js</code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">const</span> User = <span class="built_in">require</span>(<span class="string">'../models/user'</span>);</div><div class="line"><span class="keyword">const</span> jwt = <span class="built_in">require</span>(<span class="string">'jsonwebtoken'</span>);</div><div class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">'../config'</span>);</div><div class="line"><span class="keyword">const</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>);</div><div class="line"><span class="keyword">const</span> router = express.Router();</div><div class="line"></div><div class="line"><span class="built_in">require</span>(<span class="string">'../passport'</span>)(passport);</div><div class="line"></div><div class="line"><span class="comment">// 注册账户</span></div><div class="line">router.post(<span class="string">'/signup'</span>, (req, res) =&gt; &#123;</div><div class="line">  <span class="keyword">if</span> (!req.body.name || !req.body.password) &#123;</div><div class="line">    res.json(&#123;success: <span class="literal">false</span>, message: <span class="string">'请输入您的账号密码.'</span>&#125;);</div><div class="line">  &#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="keyword">var</span> newUser = <span class="keyword">new</span> User(&#123;</div><div class="line">      name: req.body.name,</div><div class="line">      password: req.body.password</div><div class="line">    &#125;);</div><div class="line">    <span class="comment">// 保存用户账号</span></div><div class="line">    newUser.save((err) =&gt; &#123;</div><div class="line">      <span class="keyword">if</span> (err) &#123;</div><div class="line">        <span class="keyword">return</span> res.json(&#123;success: <span class="literal">false</span>, message: <span class="string">'注册失败!'</span>&#125;);</div><div class="line">      &#125;</div><div class="line">      res.json(&#123;success: <span class="literal">true</span>, message: <span class="string">'成功创建新用户!'</span>&#125;);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 检查用户名与密码并生成一个accesstoken如果验证通过</span></div><div class="line">router.post(<span class="string">'/user/accesstoken'</span>, (req, res) =&gt; &#123;</div><div class="line">  User.findOne(&#123;</div><div class="line">    name: req.body.name</div><div class="line">  &#125;, (err, user) =&gt; &#123;</div><div class="line">    <span class="keyword">if</span> (err) &#123;</div><div class="line">      <span class="keyword">throw</span> err;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (!user) &#123;</div><div class="line">      res.json(&#123;success: <span class="literal">false</span>, message:<span class="string">'认证失败,用户不存在!'</span>&#125;);</div><div class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(user) &#123;</div><div class="line">      <span class="comment">// 检查密码是否正确</span></div><div class="line">      user.comparePassword(req.body.password, (err, isMatch) =&gt; &#123;</div><div class="line">        <span class="keyword">if</span> (isMatch &amp;&amp; !err) &#123;</div><div class="line">          <span class="keyword">var</span> token = jwt.sign(&#123;name: user.name&#125;, config.secret,&#123;</div><div class="line">            expiresIn: <span class="number">10080</span></div><div class="line">          &#125;);</div><div class="line">          user.token = token;</div><div class="line">          user.save(<span class="function"><span class="keyword">function</span>(<span class="params">err</span>)</span>&#123;</div><div class="line">            <span class="keyword">if</span> (err) &#123;</div><div class="line">              res.send(err);</div><div class="line">            &#125;</div><div class="line">          &#125;);</div><div class="line">          res.json(&#123;</div><div class="line">            success: <span class="literal">true</span>,</div><div class="line">            message: <span class="string">'验证成功!'</span>,</div><div class="line">            token: <span class="string">'Bearer '</span> + token,</div><div class="line">            name: user.name</div><div class="line">          &#125;);</div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">          res.send(&#123;success: <span class="literal">false</span>, message: <span class="string">'认证失败,密码错误!'</span>&#125;);</div><div class="line">        &#125;</div><div class="line">      &#125;);</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// passport-http-bearer token 中间件验证</span></div><div class="line"><span class="comment">// 通过 header 发送 Authorization -&gt; Bearer  + token</span></div><div class="line"><span class="comment">// 或者通过 ?access_token = token</span></div><div class="line">router.get(<span class="string">'/users/info'</span>,</div><div class="line">  passport.authenticate(<span class="string">'bearer'</span>, &#123; session: <span class="literal">false</span> &#125;),</div><div class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>) </span>&#123;</div><div class="line">    res.json(&#123;username: req.user.name&#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = router;</div></pre></td></tr></table></figure>
+<h3 id="passport配置"><a href="#passport配置" class="headerlink" title="passport配置"></a>passport配置</h3><p><code>./passport.js</code> 配置权限模块所需功能</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> passport = <span class="built_in">require</span>(<span class="string">'passport'</span>);</div><div class="line"><span class="keyword">const</span> Strategy = <span class="built_in">require</span>(<span class="string">'passport-http-bearer'</span>).Strategy;</div><div class="line"></div><div class="line"><span class="keyword">const</span> User = <span class="built_in">require</span>(<span class="string">'./models/user'</span>);</div><div class="line"><span class="keyword">const</span> config = <span class="built_in">require</span>(<span class="string">'./config'</span>);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">passport</span>) </span>&#123;</div><div class="line">    passport.use(<span class="keyword">new</span> Strategy(</div><div class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">token, done</span>) </span>&#123;</div><div class="line">            User.findOne(&#123;</div><div class="line">                token: token</div><div class="line">            &#125;, <span class="function"><span class="keyword">function</span>(<span class="params">err, user</span>) </span>&#123;</div><div class="line">                <span class="keyword">if</span> (err) &#123;</div><div class="line">                    <span class="keyword">return</span> done(err);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">if</span> (!user) &#123;</div><div class="line">                    <span class="keyword">return</span> done(<span class="literal">null</span>, <span class="literal">false</span>);</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">return</span> done(<span class="literal">null</span>, user);</div><div class="line">            &#125;);</div><div class="line">        &#125;</div><div class="line">    ));</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>主要验证发送的token值与用户服务器端token值是否匹配，进行信息验证。</p>
+<h2 id="具体调试"><a href="#具体调试" class="headerlink" title="具体调试"></a>具体调试</h2><p>现在就可以运行我们的代码看具体运作过程了！为了便于调试与参数的收发，我们使用<a href="https://www.getpostman.com/" target="_blank" rel="external">postman</a>(可在Chrome上或Mac上安装)来操作.</p>
+<p><code>node index</code>运行我们的本地服务器，访问 <a href="">localhost:8080/</a><br>应该就可以看到我们所返回的初始json值了，然我们继续深入测试。</p>
+<p><img src="http://of30nsqpd.bkt.clouddn.com/Snip20161201_2.png" alt=""></p>
+<p>POST访问<a href="">localhost:8080/api/signup</a>,我们来注册一个新用户，注意要设置<code>body</code>的<code>Content-Type</code>为<code>x-www-form-urlencoded</code> 以便我们的<code>body-parser</code>能够正确解析,好的我们成功模拟创建了我们的新用户。</p>
+<p><img src="http://of30nsqpd.bkt.clouddn.com/Snip20161201_4.png" alt=""></p>
+<p>连接一下数据库看下我们的用户信息是否也被正确存储(注:我使用的是MongoChef,十分强大MongoDB数据库管理软件),我们可以看到,我的password也被正确加密保存了。</p>
+<p><img src="http://of30nsqpd.bkt.clouddn.com/Snip20161201_5.png" alt=""></p>
+<p>接着POST访问<a href="">localhost:8080/api/user/accesstoken</a>,来为我的用户获得专属token，POST过程与注册相关,可以看到也正确生成我们的token值。</p>
+<p><img src="http://of30nsqpd.bkt.clouddn.com/Snip20161201_6.png" alt=""></p>
+<p>再看下我们的数据库中的用户信息，token值也被存入了进来，便于我们之后进行权限验证。</p>
+<p><img src="http://of30nsqpd.bkt.clouddn.com/Snip20161201_11.png" alt=""></p>
+<p>GET访问<a href="">localhost:8080/api/users/info</a>,同时将我们的token值在<code>Header</code>中以 <code>Authorization: token</code> 传入,正确获得用户名则表示我们访问请求通过了验证。</p>
+<p><img src="http://of30nsqpd.bkt.clouddn.com/Snip20161201_9.png" alt=""></p>
+<p>如果token值不正确，则放回 Unauthorized 并拒绝访问请求。到这里我们的权限验证功能也就基本实现了(喜大普奔~~~)。<br><img src="http://of30nsqpd.bkt.clouddn.com/Snip20161201_10.png" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>希望在看完这篇教程后能够对你在RESTful Api开发上有所启发，小生才疏学浅，过程中有什么不足的地方也欢迎指正。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/RESTful/" rel="tag">#RESTful</a>
+          
+            <a href="/tags/Api/" rel="tag">#Api</a>
+          
+            <a href="/tags/Nodejs/" rel="tag">#Nodejs</a>
+          
+            <a href="/tags/MongoDB/" rel="tag">#MongoDB</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/11/05/JavaScript-ES6-ES2015-核心功能总结/" rel="next" title="JavaScript ES6(ES2015+) 核心功能总结">
+                <i class="fa fa-chevron-left"></i> JavaScript ES6(ES2015+) 核心功能总结
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/12/01/基于Node-js-Mongoose的RestfulApi开发用户注册验证篇/"
+           data-title="Node.js+Mongoose的RestfulApi的用户token权限验证篇" data-url="http://nickgo.net/2016/12/01/基于Node-js-Mongoose的RestfulApi开发用户注册验证篇/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="//schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/IMG_1392.JPG"
+               alt="Nick Chang" />
+          <p class="site-author-name" itemprop="name">Nick Chang</p>
+          <p class="site-description motion-element" itemprop="description">Why always me ---StaryDog</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/nicksapp" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/516724275" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://zhihu.com/people/nickgo" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-comment"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/nickgo/" target="_blank" title="豆瓣">
+                  
+                    <i class="fa fa-fw fa-magnet"></i>
+                  
+                  豆瓣
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://nickgo.lofter.com/" target="_blank" title="Lofter">
+                  
+                    <i class="fa fa-fw fa-leaf"></i>
+                  
+                  Lofter
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/changjie22xd" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-laptop"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于RESTful-API"><span class="nav-number">1.</span> <span class="nav-text">关于RESTful API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API设计中的token的思路"><span class="nav-number">2.</span> <span class="nav-text">API设计中的token的思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#token设计具体实践"><span class="nav-number">3.</span> <span class="nav-text">token设计具体实践</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#整体构架"><span class="nav-number">3.1.</span> <span class="nav-text">整体构架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#新建项目"><span class="nav-number">3.2.</span> <span class="nav-text">新建项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#用户模型"><span class="nav-number">3.3.</span> <span class="nav-text">用户模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置文件"><span class="nav-number">3.4.</span> <span class="nav-text">配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地服务器配置"><span class="nav-number">3.5.</span> <span class="nav-text">本地服务器配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由配置"><span class="nav-number">3.6.</span> <span class="nav-text">路由配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#passport配置"><span class="nav-number">3.7.</span> <span class="nav-text">passport配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#具体调试"><span class="nav-number">4.</span> <span class="nav-text">具体调试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Nick Chang</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.2"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"nickgo"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("No9yqawITfI9wcx0SYJmgRSV-gzGzoHsz", "G9OthC24dC7GPcbR7U1U2xlV");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+</body>
+</html>
